@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 친우 AI의 도래</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<body>
+
+<h1 style='background:skyblue'>나의 친 우 OpenAI 의 도 래 . </h1>
+<div id="question"> 질문 : </div>
+<div id="answer"> 대답 : </div>
+
+<form>
+    <input name="qVal" value=""/>
+    <button type="button" onclick="goGen()" value="">generate</button>
+</form>
+
+<script>
+    function goGen(){
+        $.ajax({
+            type:'POST',
+            url:'/answer',
+            data:{ qVal : $('[name=qVal]').val()},
+            success: function(data){
+                console.log(data)
+                $("#question").text("질문 : "+data);
+                 $("#answer").text("대답 : "+data);
+                console.log("굿껄");
+            }
+        })
+    }
+
+
+</script>
+</body>
+</html>
